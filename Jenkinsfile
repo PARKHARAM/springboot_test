@@ -45,7 +45,7 @@ pipeline{
                     continueOnError: false, failOnError: true,
                     publishers: [
                         sshPublisherDesc(
-                            configName: "test_ssh",//Jenkins 시스템 정보에 사전 입력한 서버 ID
+                            configName: "test2",//Jenkins 시스템 정보에 사전 입력한 서버 ID
                             verbose: true,
                             transfers: [
                                 sshTransfer(
