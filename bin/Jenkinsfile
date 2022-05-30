@@ -37,7 +37,7 @@ pipeline{
             }
             
         }
-        // 참고 url : https://cjw-awdsd.tistory.com/35
+        
         /*************** Pulish Over SSH Plug in사용******************/
         stage('SSH transfer') {
             steps([$class: 'BapSshPromotionPublisherPlugin']) {
