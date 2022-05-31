@@ -1,0 +1,17 @@
+디비 정보
+
+데이터 베이스 test_db 생성 후 아래 테이블 생성
+
+
+CREATE TABLE `user` (
+    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '사용자번호',
+      `email` varchar(255) NOT NULL COMMENT '아이디',
+     `password` varchar(256) DEFAULT NULL COMMENT '비밀번호',
+       `role` varchar(255) ,
+       PRIMARY KEY (`id`)
+     ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+https://dailyheumsi.tistory.com/203
+
+https://github.com/heumsi/springboot-sample-webpage/tree/master/src/main/resources/templates
