@@ -24,6 +24,12 @@ public class ExController {
         return "signup";
     }
 
+    @GetMapping("/index")
+    public String index() {
+        return "index";
+    }
+
+    
     @PostMapping("/signUp")
     public String signUp(User user) {
         user.setRole("USER");
@@ -37,7 +43,7 @@ public class ExController {
         MyUserDetail userDetail = (MyUserDetail)authentication.getPrincipal();
         log.info(userDetail.getUsername());
         model.addAttribute("info", userDetail.getUsername());
-    	//return "user_access";
-        return "index";
+    	return "user_access";
+        //return "index";
     }
 }
