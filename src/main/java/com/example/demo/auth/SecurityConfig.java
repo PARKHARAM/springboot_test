@@ -25,12 +25,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http	
-				.authorizeRequests()
+		http.authorizeRequests()
 				.antMatchers("/userAccess").hasRole("USER")
 				.antMatchers("/signUp").anonymous()
 				.and()
-				.formLogin().and().cors().and().csrf().disable();			//로그인 창
+				.formLogin().and().cors().and().csrf().disable();		//로그인 창
 	}
 
 	/**
