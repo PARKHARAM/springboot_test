@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ExController {
     private final ExService service;
 
+
     @GetMapping("/signUp")
     public String signUpForm() {
         return "signup";
@@ -36,6 +37,7 @@ public class ExController {
         MyUserDetail userDetail = (MyUserDetail)authentication.getPrincipal();
         log.info(userDetail.getUsername());
         model.addAttribute("info", userDetail.getUsername());
-    	return "user_access";
+    	//return "user_access";
+        return "index";
     }
 }
