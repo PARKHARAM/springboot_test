@@ -54,9 +54,9 @@ public class ExController {
         return "singlepost";
     }
 
-    @GetMapping("/duplicated-login")
+    @GetMapping("/duplicatedlogin")
     public String duplicatedlogin() {
-        return "duplicated-login";
+        return "duplicatedlogin";
     }
  
     
