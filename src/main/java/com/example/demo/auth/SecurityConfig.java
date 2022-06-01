@@ -30,7 +30,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers("/userAccess").hasRole("USER")
 				.antMatchers("/signUp").anonymous()
-				.antMatchers("/index").hasRole("USER")
+				.antMatchers("/homepage").hasRole("USER")
+				.antMatchers("/blog").hasRole("USER")
+				.antMatchers("/about").hasRole("USER")
+				.antMatchers("/contact").hasRole("USER")
+				.antMatchers("/product").hasRole("USER")
+				.antMatchers("/singlepost").hasRole("USER")
 				.and()
 				.formLogin().and().cors().and().csrf().disable();		
 		
@@ -38,8 +43,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .maximumSessions(1)
         .maxSessionsPreventsLogin(false)
         //.expiredUrl("/duplicatedlogin")
-        .expiredUrl("/login")
+        .expiredUrl("/index")
         .sessionRegistry(sessionRegistry());
+        
+        http.logout()
+        .logoutUrl("/logout") // 로그아웃 처리 URL
+        .logoutSuccessUrl("/index")
+        
+        ;
+        
 
 	}
 	

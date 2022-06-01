@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.User;
 import com.example.demo.auth.ExService;
@@ -24,6 +25,7 @@ public class ExController {
         return "signup";
     }
 
+
     @GetMapping("/index")
     public String index() {
         return "index";
@@ -33,23 +35,23 @@ public class ExController {
         return "index";
     }
     
-    @GetMapping("/about.html")
+    @GetMapping("/about")
     public String about() {
         return "about";
     }
-    @GetMapping("/blog.html")
+    @GetMapping("/blog")
     public String blog() {
         return "blog";
     }
-    @GetMapping("/contact.html")
+    @GetMapping("/contact")
     public String contact() {
         return "contact";
     }
-    @GetMapping("/product.html")
+    @GetMapping("/product")
     public String product() {
         return "product";
     }
-    @GetMapping("/singlepost.html")
+    @GetMapping("/singlepost")
     public String singlepost() {
         return "singlepost";
     }
@@ -58,7 +60,16 @@ public class ExController {
     public String duplicatedlogin() {
         return "duplicatedlogin";
     }
- 
+    @GetMapping("/homepage")
+    public String home() {
+        return "homepage";
+    }
+    
+    @GetMapping("/test.html")
+    public String test() {
+        return "test";
+    }
+
     
     
     @PostMapping("/signUp")
@@ -71,10 +82,19 @@ public class ExController {
 
     @GetMapping("/")
     public String userAccess(Model model, Authentication authentication) {
-        MyUserDetail userDetail = (MyUserDetail)authentication.getPrincipal();
-        log.info(userDetail.getUsername());
-        model.addAttribute("info", userDetail.getUsername());
-    	return "user_access";
-        //return "index";
+        
+        if(!(authentication == null)) {
+        	 MyUserDetail userDetail = (MyUserDetail)authentication.getPrincipal();
+        	 log.info(userDetail.getUsername());
+             model.addAttribute("info", userDetail.getUsername());
+         	return "homepage";
+        }
+        else {
+        	return "index";
+        }
+        
     }
+    
+
+
 }
