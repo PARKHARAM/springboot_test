@@ -34,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .maximumSessions(1)
         .maxSessionsPreventsLogin(false)
         //.expiredUrl("/duplicatedlogin")
+        .expiredUrl("/session-expired")
         .sessionRegistry(sessionRegistry());
 
 	}
