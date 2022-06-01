@@ -19,7 +19,6 @@ import lombok.RequiredArgsConstructor;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private final ExService exService;
 	/**
-	 * 규칙 설정
 	 * @param http
 	 * @throws Exception
 	 */
@@ -29,11 +28,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/userAccess").hasRole("USER")
 				.antMatchers("/signUp").anonymous()
 				.and()
-				.formLogin().and().cors().and().csrf().disable();		//로그인 창
+				.formLogin().and().cors().and().csrf().disable();		
+		
+        http.sessionManagement()
+        .maximumSessions(1)
+        .maxSessionsPreventsLogin(false)
+        .expiredUrl("/duplicated-login")
+        .sessionRegistry(sessionRegistry());
+
 	}
+    @Bean
+    public SessionRegistry sessionRegistry() {
+        return new SessionRegistryImpl();
+    }
+
+
 
 	/**
-	 * 로그인 인증 처리 메소드
 	 * @param auth
 	 * @throws Exception
 	 */

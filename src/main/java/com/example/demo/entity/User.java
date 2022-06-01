@@ -11,11 +11,12 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@EqualsAndHashCode
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String email;    //이메일
-	private String password; //패스워드
-	private String role;     //권한
+	private String email;    
+	private String password; 
+	private String role;     
 }
