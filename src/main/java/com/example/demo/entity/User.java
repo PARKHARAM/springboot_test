@@ -11,7 +11,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
+@EqualsAndHashCode(of= {"id"})
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
