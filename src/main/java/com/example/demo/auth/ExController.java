@@ -28,15 +28,7 @@ public class ExController {
     public String index() {
         return "index";
     }
-    @GetMapping("/index.html")
-    public String index() {
-        return "index";
-    }
-    
-    @GetMapping("/about.html")
-    public String index() {
-        return "about";
-    }
+
 
     
     
