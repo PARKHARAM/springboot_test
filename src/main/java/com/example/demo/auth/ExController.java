@@ -28,9 +28,32 @@ public class ExController {
     public String index() {
         return "index";
     }
-
-
+    @GetMapping("/index.html")
+    public String index2() {
+        return "index";
+    }
     
+    @GetMapping("/about.html")
+    public String about() {
+        return "about";
+    }
+    @GetMapping("/blog.html")
+    public String blog() {
+        return "blog";
+    }
+    @GetMapping("/contact.html")
+    public String contact() {
+        return "contact";
+    }
+    @GetMapping("/product.html")
+    public String product() {
+        return "product";
+    }
+    @GetMapping("/singlepost.html")
+    public String singlepost() {
+        return "singlepost";
+    }
+
     
     
     
