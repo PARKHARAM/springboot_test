@@ -9,7 +9,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.demo.entity.User;
 
+import lombok.EqualsAndHashCode;
+
 @SuppressWarnings("serial")
+@EqualsAndHashCode(of= {"email"})
 public class MyUserDetail implements UserDetails {
 	private String email;
 	private String password;

@@ -1,5 +1,6 @@
 package com.example.demo.auth;
 
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -10,8 +11,7 @@ import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
-
-
+import org.springframework.security.web.session.HttpSessionEventPublisher;
 
 import com.example.demo.auth.ExService;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers("/userAccess").hasRole("USER")
 				.antMatchers("/signUp").anonymous()
+				.antMatchers("/index").hasRole("USER")
 				.and()
 				.formLogin().and().cors().and().csrf().disable();		
 		
@@ -37,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .maximumSessions(1)
         .maxSessionsPreventsLogin(false)
         //.expiredUrl("/duplicatedlogin")
-        .expiredUrl("/session-expired")
+        .expiredUrl("/login")
         .sessionRegistry(sessionRegistry());
 
 	}
@@ -47,6 +48,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    return new SessionRegistryImpl();
 	}
 
+    @Bean
+    public static ServletListenerRegistrationBean httpSessionEventPublisher() {
+        return new ServletListenerRegistrationBean(new HttpSessionEventPublisher());
+    }
 
 
 	/**
