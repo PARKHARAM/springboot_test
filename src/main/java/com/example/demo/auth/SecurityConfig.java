@@ -37,6 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .sessionRegistry(sessionRegistry());
 
 	}
+	
     @Bean
     public SessionRegistry sessionRegistry() {
         return new SessionRegistryImpl();
