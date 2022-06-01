@@ -37,22 +37,6 @@ public class ExController {
     public String index() {
         return "about";
     }
-    @GetMapping("/blog.html")
-    public String index() {
-        return "blog";
-    }
-    @GetMapping("/contact.html")
-    public String index() {
-        return "contact";
-    }
-    @GetMapping("/product.html")
-    public String index() {
-        return "product";
-    }
-    @GetMapping("/singlepost.html")
-    public String index() {
-        return "singlepost";
-    }
 
     
     
