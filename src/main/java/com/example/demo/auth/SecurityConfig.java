@@ -33,15 +33,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement()
         .maximumSessions(1)
         .maxSessionsPreventsLogin(false)
-        .expiredUrl("/duplicatedlogin")
+        //.expiredUrl("/duplicatedlogin")
         .sessionRegistry(sessionRegistry());
 
 	}
 	
-    @Bean
-    public SessionRegistry sessionRegistry() {
-        return new SessionRegistryImpl();
-    }
+	@Bean
+	SessionRegistry sessionRegistry() {
+	    return new SessionRegistryImpl();
+	}
 
 
 
