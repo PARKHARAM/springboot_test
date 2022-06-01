@@ -55,7 +55,7 @@ public class ExController {
     }
 
     @GetMapping("/duplicated-login")
-    public String duplicated-login() {
+    public String duplicatedlogin() {
         return "duplicated-login";
     }
  
