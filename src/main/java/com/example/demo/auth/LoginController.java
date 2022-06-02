@@ -1,31 +1,36 @@
 package com.example.demo.auth;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import com.example.demo.dto.TestDTO;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class LoginController {
-
-/**
-* 로그인 화면
-* @return
-*/
-@GetMapping("/login")
-public String login(HttpServletRequest request, Model model) {
-
-    //사용자 정보가 있을 경우 바로 메인 페이지로 이동
-    TestDTO session = (TestDTO)request.getSession().getAttribute(TestDTO.KEY);
-    if(session != null) {
-        return "redirect:/index/";
-    }
-
-    model.addAttribute("loginForm", new TestDTO());
-
-    return "/login/login";
-}
+	
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
+	public String login(HttpServletRequest request, HttpSession session, RedirectAttributes rttr) throws Exception {
+		String id = request.getParameter("id");
+		if(id != null){
+			String userId = SessionConfig.getSessionidCheck("login_id", id);
+			System.out.println(id + " : " +userId);
+			session.setMaxInactiveInterval(60 * 60);
+			session.setAttribute("login_id", id);
+			return "redirect:/home.do";
+		}
+		return "redirect:/main.do";
+	}
+	
+	@RequestMapping(value = "/main.do")
+	public String index(HttpSession session) throws Exception {
+		return "login";
+	}
+	
+	@RequestMapping(value = "/home.do")
+	public String home(HttpSession session) throws Exception {
+		return "home";
+	}
 }
