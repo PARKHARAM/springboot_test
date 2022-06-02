@@ -79,7 +79,7 @@ public class ExController {
         log.info(user.getEmail());
         return "redirect:/login";
     }
-/*
+
     @GetMapping("/")
     public String userAccess(Model model, Authentication authentication) {
         
@@ -95,6 +95,6 @@ public class ExController {
         
     }
     
-*/
+
 
 }
