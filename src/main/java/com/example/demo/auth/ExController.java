@@ -99,9 +99,6 @@ public class ExController {
         
     }
     
-    @GetMapping("/getSessionId")
-    public String getSessionId(HttpSession session) {        
-    	return session.getId();    }
 
     
 
