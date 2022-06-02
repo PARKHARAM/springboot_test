@@ -19,12 +19,32 @@ import com.example.demo.dto.TestDTO;
 @EnableRedisRepositories
 public class RedisConfiguration {
 
+    @Value("${spring.redis.host}")
+    private String host;
+
+    @Value("${spring.redis.password}")
+    private String password;
+
+    @Value("${spring.redis.port}")
+    private int port;
+
+
 @Bean
-public RedisConnectionFactory redisConnectionFactory() {
-    LettuceConnectionFactory lettuceConnectionFactory = new LettuceConnectionFactory();
-    return lettuceConnectionFactory;
+public LettuceConnectionFactory lettuceConnectionFactory() {
+    final RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration(host, port);
+    redisStandaloneConfiguration.setPassword(RedisPassword.of(password));
+    return new LettuceConnectionFactory(redisStandaloneConfiguration);
 }
 
+@Bean
+public RedisTemplate<String, Object> redisTemplate() {
+    final RedisTemplate<String, Object> template = new RedisTemplate<>();
+    template.setConnectionFactory(lettuceConnectionFactory());
+    template.setKeySerializer(new StringRedisSerializer());
+    template.setDefaultSerializer(new Jackson2JsonRedisSerializer<>(TestDTO.class));
+    return template;
+}
+/*
 @Bean
 public RedisTemplate<String, Object> redisTemplate() {
     RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
@@ -32,5 +52,5 @@ public RedisTemplate<String, Object> redisTemplate() {
     redisTemplate.setKeySerializer(new StringRedisSerializer());
     redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(TestDTO.class));
     return redisTemplate;
-}
+}*/
 }
