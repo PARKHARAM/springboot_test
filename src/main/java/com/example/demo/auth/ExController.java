@@ -1,6 +1,10 @@
 package com.example.demo.auth;
 
 import com.example.demo.auth.MyUserDetail;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -94,6 +98,11 @@ public class ExController {
         }
         
     }
+    
+    @GetMapping("/getSessionId")
+    public String getSessionId(HttpSession session) {        
+    	return session.getId();    }
+
     
 
 
