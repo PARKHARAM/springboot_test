@@ -61,6 +61,29 @@ pipeline{
             }
         }
         
+                /*************** Pulish Over SSH Plug in사용******************/
+        stage('SSH transfer2') {
+            steps([$class: 'BapSshPromotionPublisherPlugin']) {
+                sshPublisher(
+                    continueOnError: false, failOnError: true,
+                    publishers: [
+                        sshPublisherDesc(
+                            configName: "test3",//Jenkins 시스템 정보에 사전 입력한 서버 ID
+                            verbose: true,
+                            transfers: [
+                                sshTransfer(
+                                    sourceFiles: "target/hello-1-0.0.1-SNAPSHOT.jar", //전송할 파일
+                                    removePrefix: "target/", //파일에서 삭제할 경로가 있다면 작성
+                                    remoteDirectory: "",//배포할 위치
+                                    execCommand: "ls -al" //원격지에서 실행할 커맨드
+                                )
+                            ]
+                        )
+                    ]
+                )
+            }
+        }
+        
         
         
     }
