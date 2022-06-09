@@ -1,12 +1,18 @@
 package com.example.demo.auth;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+
 
 @Controller
 public class LoginController {
@@ -33,4 +39,43 @@ public class LoginController {
 	public String home(HttpSession session) throws Exception {
 		return "home";
 	}
+	
+	@RequestMapping("/test")
+	public ModelAndView test() throws Exception{
+		ModelAndView mav = new ModelAndView("test");
+		mav.addObject("name", "goddaehee");
+
+		List<String> testList = new ArrayList<String>();
+		testList.add("a");
+		testList.add("b");
+		testList.add("c");
+
+		mav.addObject("list", testList);
+		return mav;
+	}
+	@RequestMapping(value ="/")
+	public String test1() throws Exception{
+		return "home";
+	}
+	
+	@RequestMapping(value ="/test2")
+	public String test2() throws Exception{
+		return "home";
+	}
+	@GetMapping("auth/join")
+	public String joinForm() {
+		return "user/join";
+	}
+	
+	@GetMapping("auth/login")
+	public String loginForm() {
+		return "user/login";
+	}
+	@GetMapping("auth/index")
+	public String loginForm2() {
+		return "index";
+	}
+
+
+	
 }

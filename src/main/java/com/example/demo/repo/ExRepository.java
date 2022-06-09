@@ -18,9 +18,14 @@ public class ExRepository {
 		em.persist(user);
 	}
 
+	public void User(User user){
+		em.persist(user);
+	}
 	public User findUserByEmail(String email){
 		TypedQuery<User> query = em.createQuery("select m from User as m where m.email = ?1", User.class)
 			.setParameter(1, email);
 		return query.getSingleResult();
 	}
+
+
 }
