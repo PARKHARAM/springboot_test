@@ -73,9 +73,13 @@ public class LoginController {
 	}
 	@GetMapping("auth/index")
 	public String loginForm2() {
-		return "index";
+		return "home";
 	}
 
+	@GetMapping("auth/best")
+	public String best() {
+		return "best";
+	}
 
 	
 }

@@ -9,10 +9,18 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  
+  
+
+  
+  
 </head>
+
+
 <body>
 
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark"> 
   <a class="navbar-brand" href="/auth/index">Mary Blog</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
@@ -25,6 +33,18 @@
       <li class="nav-item">
         <a class="nav-link" href="/auth/join">회원가입</a>
       </li>  
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/best">BEST</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/best">OUTER</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/best">TOP</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/best">BOTTOM</a>
+      </li>          
     </ul>
   </div>  
 </nav>
